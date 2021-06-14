@@ -3,9 +3,39 @@ package arrays;
 import java.util.Arrays;
 
 public class Array {
-   public static void main(String[] args) {
-      sortArrayZeroOneTwo(new int[]{1, 2, 0});
+   public static void main(String[] args) throws Exception {
+
+//      mergeOverLappingIntervals(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}});
    }
+
+   private static void printPermutation(String str, String res) {
+//      printPermutation("abc", "");
+      if (str.length() == 0) {
+         System.out.println(res);
+      }
+      for (int i = 0; i < str.length(); i++) {
+         char ch = str.charAt(i);
+         printPermutation(str.substring(0, i) + str.substring(i + 1), res + ch);
+      }
+
+   }
+
+   private static void mergeOverLappingIntervals(int[][] arr) {
+
+   }
+
+   private static int kadaneAlgo(int[] arr) {
+      if (arr.length == 0) {
+         return -1;
+      }
+      int sum = arr[0], ans = arr[0];
+      for (int idx = 1; idx < arr.length; idx++) {
+         sum = Integer.max(sum + arr[idx], arr[idx]);
+         ans = Integer.max(sum, ans);
+      }
+      return ans;
+   }
+
 
    // dutch national flag algo to solve it
    private static void sortArrayZeroOneTwo(int[] arr) {
